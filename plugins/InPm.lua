@@ -98,7 +98,7 @@ local service = msg.service
 local name_log = user_print_name(msg.from)
 if to == 'user' or service or is_admin1(msg) and to == "chat" or to == "channel" then
 	if is_gbanned(msg.from.id) then
-        return '*You are globally banned.\n For More Informaion Send msg to @BlackSupport_Bot'
+        return '*You are globally banned.\n For More Informaion Send msg to @aminpmresan_bot'
 	end
     if matches[1] == 'join' then
 	local data = load_data(_config.moderation.data)
@@ -220,7 +220,7 @@ if to == 'user' or service or is_admin1(msg) and to == "chat" or to == "channel"
 
 	if matches[1] == 'help' and msg.to.type == 'user' or matches[1] == 'pmhelp' and is_admin1(msg) and msg.to.type ~= 'user' then
       	savelog(msg.to.id, name_log.." ["..msg.from.id.."] used pm help")
-		text = "Welcome to BlackPlus!\n\n>To get a new BlackPlus group, Use /support command to get a support Link! Or Contact a Support Team With @BlackSupport_Bot\n\nFor more information, check out our channel:\n[@Black_CH] \n\nUse #superhelp command to show bot commands!!\n\n#Thanks_for_using @BIackPlus!"
+		text = "Welcome to Mega-Maximus!\n\n>To get a new Maximus group Contact  With @aminpmresan_bot\n\nUse #superhelp command to show bot commands!!\n\n#Thanks_for_using @Mega-Maximus!"
      	return text
     end
 
