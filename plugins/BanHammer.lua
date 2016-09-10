@@ -134,10 +134,10 @@ local function kick_ban_res(extra, success, result)
         redis:srem(hash, member_id)
         return 'Done\n User Unbanned'
       elseif get_cmd == 'banall' then
-        send_large_msg(receiver, '> ['..user_id..' ] Banned for all @BlackPlus Groups/SuperGroups! (Globally banned)')
+        send_large_msg(receiver, '> ['..user_id..' ] به دلیل خارش کون از همه گروه های ربات سیک شد')
 		banall_user(member_id)
       elseif get_cmd == 'unbanall' then
-        send_large_msg(receiver, '> ['..user_id..' ] Unbanned for all @BlackPlus Groups/SuperGroups! (Unglobally banned)')
+        send_large_msg(receiver, '> ['..user_id..' ] از بن جهانی خارج شد')
 	    unbanall_user(member_id)
     end
 end
@@ -156,7 +156,7 @@ local support_id = msg.from.id
     elseif matches[1]:lower() == 'id' then
       local name = user_print_name(msg.from)
       savelog(msg.to.id, name.." ["..msg.from.id.."] used /id ")
-      return "> Group ID: "..msg.to.id.."\n> Group Name: "..msg.to.title.."\n> First Name: "..(msg.from.first_name or '').."\n> Last Name: "..(msg.from.last_name or '').."\n> Your ID: "..msg.from.id.."\n> Username: @"..(msg.from.username or '').."\n> Phone Number: +"..(msg.from.phone or '').."\n> Your Link: Telegram.Me/"..(msg.from.username or '').."\n> Group Type: #Normal"	
+      return "> Group ID: "..msg.to.id.."\n> 💠نام گروه: "..msg.to.title.."\n> 🚹نام: "..(msg.from.first_name or '').."\n> ➿نام خانوادگی: "..(msg.from.last_name or '').."\n> ♐️آیدی شما  :"..msg.from.id.."\n> 🆔آیدی کاربری شما: @"..(msg.from.username or '').."\n> 📞شماره موبایل شما: +"..(msg.from.phone or '').."\n> 〽️لینک شما :Telegram.Me/"..(msg.from.username or '').."\n> 🔴گروه: #Normal"	
     end
   end
   if matches[1]:lower() == 'kickme' and msg.to.type == "chat" then-- /kickme
@@ -297,7 +297,7 @@ end
          	return false
         end
         	banall_user(targetuser)
-       		return '> ['..user_id..' ] Banned for all @BlackPlus Groups/SuperGroups! (Globally banned)'
+       		return '> ['..user_id..' ] به دلیل خارش کون از همه گروه ها سیک کرد'
      else
 	local cbres_extra = {
 		chat_id = msg.to.id,
@@ -317,7 +317,7 @@ end
           	return false
         end
        		unbanall_user(user_id)
-        	return '> ['..user_id..' ] Unbanned for all @BlackPlus Groups/SuperGroups! (Unglobally banned)'
+        	return '> ['..user_id..' ] از بن جهانی خارج شد'
     else
 		local cbres_extra = {
 			chat_id = msg.to.id,
