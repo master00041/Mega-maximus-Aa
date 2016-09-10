@@ -15,7 +15,7 @@ local function run(msg, matches)
   if matches[1] == 'bot' then
     if is_sudo(msg) then
     send_document(get_receiver(msg), "./data/me/version.webp", ok_cb, false)
-      return "B L A C K +\n---------------------------------------------\n|An Advanced Bot Based On #LUA|\n\n> Bot Number : +19092545429\n---------------------------------------------\n #Developer : [@MehdiHS | @MehdHS_Bot]\n---------------------------------------------\n #Sudoers :\n1 > [#Amirho3inf]\n2 > [#Surena]\n3 > [#Vandad_YflQw]\n4 > [#Alireza_NiGht]\n---------------------------------------------\n> Channel : @Black_CH"
+      return "B L A C K +\n---------------------------------------------\n|An Advanced Bot Based On #LUA|\n\n> Bot Number : +18562887353\n---------------------------------------------\n #Developer : [@pedaret | @aminpmresan_bot]"
     elseif is_admin1(msg) then
     send_document(get_receiver(msg), "./data/me/admin.webp", ok_cb, false)
       return "You're Admin"
