@@ -791,6 +791,8 @@ end
   local settings = data[tostring(target)]['settings']
   local text = "\n⚙SuperGroup settings⚙:\n____________________\n⚡️Lock links : "..settings.lock_link.."\n⚡️Lock contacts: "..settings.lock_contacts.."\n⚡️Lock flood: "..settings.flood.."\n⚡️Flood sensitivity : "..NUM_MSG_MAX.."\n⚡️Lock spam: "..settings.lock_spam.."\n⚡️Lock Arabic: "..settings.lock_arabic.."\n⚡️Lock Member: "..settings.lock_member.."\n⚡️Lock RTL: "..settings.lock_rtl.."\n⚡️Lock Tgservice: "..settings.lock_tgservice.."\n⚡️Lock sticker: "..settings.lock_sticker.."\n⚡️Lock tag: "..settings.tag.."\n⚡️Lock emoji: "..settings.emoji.."\n⚡️Lock english: "..settings.english.."\n⚡️Lock Forward: "..settings.fwd."\n⚡️Lock join: "..settings.join.."\n⚡️Lock media: "..settings.media.."\n⚡️Lock fosh: "..settings.badwords.."\n⚡️Lock leave: "..settings.leave.."\n⚡️Lock bots: "..bots_protection.."\n____________________\n⚙Easy Sweet&Faster Switch\n____________________\nAbout Groupℹ️:️\n____________________\n⚡️ Group type: "..gp_type.."\n⚡️Public: "..settings.public.."\n⚡️Strict settings: "..settings.strict.."\n____________________\n💥Bot Version : 6.9 💥\n💥Mega-Maximus\n@Pedaret"
   reply_msg(msg.id, text, ok_cb, false)
+    local text = string.gsub(text,'yes','✅')
+  local text = string.gsub(text,'no','❎')
 end
 
 local function promote_admin(receiver, member_username, user_id)
