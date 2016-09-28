@@ -55,7 +55,7 @@ local function check_member_super(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = msg.to.id
       save_data(_config.moderation.data, data)
-	  local text = '<b>SuperGroup</b> Has Been <i>Added<i> \n <b>Added </b> by : |'..msg.from.id..'| \n @'..msg.from.username..''
+	  local text = '<b>SuperGroup Has Been Added</b> \n <b>Added </b> by : |'..msg.from.id..'| \n @'..msg.from.username..''
       return reply_msg(msg.id, text, ok_cb, false)
     end
   end
@@ -79,7 +79,7 @@ local function check_member_superrem(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = nil
       save_data(_config.moderation.data, data)
-	  local text = '<b>SuperGroup</b> Has been <i>Removed<i> \n <b>Removed by</b> : |'..msg.from.id..'| \n @'..msg.from.username..''
+	  local text = '<b>SuperGroup Has been Removed</b> \n <b>Removed by</b> : |'..msg.from.id..'| \n @'..msg.from.username..''
       return reply_msg(msg.id, text, ok_cb, false)
     end
   end
@@ -129,10 +129,10 @@ local function callback_clean_bots (extra, success, result)
 end
 --Get and output info about supergroup
 local function callback_info(cb_extra, success, result)
-local title ="<b>Info</b> for <i>SuperGroup<i> : ["..result.title.."]\n\n"
-local admin_num = "<b>Admin</b> Count : "..result.admins_count.."\n"
-local user_num = "<b>User</b> Count : "..result.participants_count.."\n"
-local kicked_num = "<b>Kicked</b> User <i>Count<i> "..result.kicked_count.."\n"
+local title ="<b>Info for SuperGroup</b> : ["..result.title.."]\n\n"
+local admin_num = "<b>Admin Count</b> : "..result.admins_count.."\n"
+local user_num = "<b>User Count</b> : "..result.participants_count.."\n"
+local kicked_num = "<b>Kicked User Count</b> "..result.kicked_count.."\n"
 local channel_id = "<b>ID</b> > "..result.peer_id.."\n"
 if result.username then
 	channel_username = "Username > @"..result.username
@@ -204,11 +204,11 @@ local function lock_group_links(msg, data, target)
   end
   local group_link_lock = data[tostring(target)]['settings']['lock_link']
   if group_link_lock == 'yes' then
-    return reply_msg(msg.id,"<b>Link</b> Posting is <i>Already<i> <b>Locked!!</b>", ok_cb, false)
+    return reply_msg(msg.id,"<b>Link</b> Posting is Already <b>Locked!!</b>", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_link'] = 'yes'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"<b>Link</b> Posting has been <i>Locked<i>", ok_cb, false)
+    return reply_msg(msg.id,"<b>Link</b> Posting has been <b>Locked</b>", ok_cb, false)
   end
 end
 
@@ -218,11 +218,11 @@ local function unlock_group_links(msg, data, target)
   end
   local group_link_lock = data[tostring(target)]['settings']['lock_link']
   if group_link_lock == 'no' then
-    return reply_msg(msg.id,"<b>Link</b> Posting is not <i>Locked!!<i>", ok_cb, false)
+    return reply_msg(msg.id,"<b>Link</b> Posting is not <b>Locked!!</b>", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_link'] = 'no'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"<b>Link</b> posting has been <i>Unlocked<i>", ok_cb, false)
+    return reply_msg(msg.id,"<b>Link</b> posting has been <b>Unlocked</b>", ok_cb, false)
   end
 end
 
@@ -235,11 +235,11 @@ local function lock_group_spam(msg, data, target)
   end
   local group_spam_lock = data[tostring(target)]['settings']['lock_spam']
   if group_spam_lock == 'yes' then
-    return reply_msg(msg.id,"SuperGroup <b>Spam</b> is <i>Already<i> <b>Locked!!</b>", ok_cb, false)
+    return reply_msg(msg.id,"SuperGroup <b>Spam</b> is <b>Already</b> <b>Locked!!</b>", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_spam'] = 'yes'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"<i>SuperGroup<i> <b>Spam</b> Has neen <b>Locked</b>", ok_cb, false)
+    return reply_msg(msg.id,"<b>SuperGroup</b> <b>Spam</b> Has neen <b>Locked</b>", ok_cb, false)
   end
 end
 
@@ -249,11 +249,11 @@ local function unlock_group_spam(msg, data, target)
   end
   local group_spam_lock = data[tostring(target)]['settings']['lock_spam']
   if group_spam_lock == 'no' then
-    return reply_msg(msg.id,"<i>SuperGroup<i> <b>Spam</b> is not <b>Locked</b>", ok_cb, false)
+    return reply_msg(msg.id,"<b>SuperGroup</b> <b>Spam</b> is not <b>Locked</b>", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_spam'] = 'no'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"<i>SuperGroup<i> <b>Spam</b> has been <b>Unlocked</b>", ok_cb, false)
+    return reply_msg(msg.id,"<b>SuperGroup</b> <b>Spam</b> has been <b>Unlocked</b>", ok_cb, false)
   end
 end
 
@@ -263,11 +263,11 @@ local function lock_group_flood(msg, data, target)
   end
   local group_flood_lock = data[tostring(target)]['settings']['flood']
   if group_flood_lock == 'yes' then
-    return reply_msg(msg.id,"<b>Spamming</b> is <i>Already<i> <b>Locked</b>", ok_cb, false)
+    return reply_msg(msg.id,"<b>Spamming</b> is <b>Already</b> <b>Locked</b>", ok_cb, false)
   else
     data[tostring(target)]['settings']['flood'] = 'yes'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"<i>Spamming<i> has been <b>Locked</b>", ok_cb, false)
+    return reply_msg(msg.id,"Spamming has been <b>Locked</b>", ok_cb, false)
   end
 end
 
@@ -277,11 +277,11 @@ local function unlock_group_flood(msg, data, target)
   end
   local group_flood_lock = data[tostring(target)]['settings']['flood']
   if group_flood_lock == 'no' then
-    return reply_msg(msg.id,"<b>Spamming</b> is <i>not<i> <b>Locked</b>", ok_cb, false)
+    return reply_msg(msg.id,"<b>Spamming</b> is not <b>Locked</b>", ok_cb, false)
   else
     data[tostring(target)]['settings']['flood'] = 'no'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"<b>Spamming</b> has been <i>Unlocked<i>", ok_cb, false)
+    return reply_msg(msg.id,"<b>Spamming</b> has been Unlocked", ok_cb, false)
   end
 end
 
@@ -291,11 +291,11 @@ local function lock_group_arabic(msg, data, target)
   end
   local group_arabic_lock = data[tostring(target)]['settings']['lock_arabic']
   if group_arabic_lock == 'yes' then
-    return reply_msg(msg.id,"<b>Arabic/Persian</b> is <i>Already<i> <b>Locked</b>", ok_cb, false)
+    return reply_msg(msg.id,"<b>Arabic/Persian</b> is Already <b>Locked</b>", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_arabic'] = 'yes'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"<b>Arabic/persian</b> has been <i>Locked<i>", ok_cb, false)
+    return reply_msg(msg.id,"<b>Arabic/persian</b> has been Locked", ok_cb, false)
   end
 end
 
@@ -305,11 +305,11 @@ local function unlock_group_arabic(msg, data, target)
   end
   local group_arabic_lock = data[tostring(target)]['settings']['lock_arabic']
   if group_arabic_lock == 'no' then
-    return reply_msg(msg.id,"<b>Arabic/Persian</b> is <i>Already<i> <b>Unlocked</b>", ok_cb, false)
+    return reply_msg(msg.id,"<b>Arabic/Persian</b> is Already <b>Unlocked</b>", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_arabic'] = 'no'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"<b>Arabic/Persian</b> has been <i>Unlocked<i>", ok_cb, false)
+    return reply_msg(msg.id,"<b>Arabic/Persian</b> has been Unlocked", ok_cb, false)
   end
 end
 -- Tag Fanction by AminYaghi!
@@ -319,11 +319,11 @@ local function lock_group_tag(msg, data, target)
   end
   local group_tag_lock = data[tostring(target)]['settings']['lock_tag']
   if group_tag_lock == 'yes' then
-    return reply_msg(msg.id,"<b>Tag</b> is <i>Already<i> <b>Locked</b>", ok_cb, false)
+    return reply_msg(msg.id,"<b>Tag</b> is Already <b>Locked</b>", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_tag'] = 'yes'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"<b>Tag</b> has been <i>Locked<i>", ok_cb, false)
+    return reply_msg(msg.id,"<b>Tag</b> has been Locked", ok_cb, false)
   end
 end
 
@@ -333,11 +333,11 @@ local function unlock_group_tag(msg, data, target)
   end
   local group_tag_lock = data[tostring(target)]['settings']['lock_tag']
   if group_tag_lock == 'no' then
-    return reply_msg(msg.id,"<b>Tag</b> is <i>Already<i> <b>Unlocked</b>", ok_cb, false)
+    return reply_msg(msg.id,"<b>Tag</b> is Already <b>Unlocked</b>", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_tag'] = 'no'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"<b>Tag</b> has been <i>Unlocked<i>", ok_cb, false)
+    return reply_msg(msg.id,"<b>Tag</b> has been Unlocked", ok_cb, false)
   end
 end
 -- WebPage Fanction by AminYaghi!
@@ -347,11 +347,11 @@ local function lock_group_webpage(msg, data, target)
   end
   local group_webpage_lock = data[tostring(target)]['settings']['lock_webpage']
   if group_webpage_lock == 'yes' then
-    return reply_msg(msg.id,"<b>WebLink</b> Posting has is <i>Already<i> <b>Locked</b>", ok_cb, false)
+    return reply_msg(msg.id,"<b>WebLink</b> Posting has is Already <b>Locked</b>", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_webpage'] = 'yes'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"<b>WebLink</b> posting has been <i>Locked<i>", ok_cb, false)
+    return reply_msg(msg.id,"<b>WebLink</b> posting has been Locked", ok_cb, false)
   end
 end
 
@@ -361,11 +361,11 @@ local function unlock_group_webpage(msg, data, target)
   end
   local group_webpage_lock = data[tostring(target)]['settings']['lock_webpage']
   if group_webpage_lock == 'no' then
-    return reply_msg(msg.id,"<b>WebLink</b> posting is <i>Already<i> <b>Unlocked</b>", ok_cb, false)
+    return reply_msg(msg.id,"<b>WebLink</b> posting is Already <b>Unlocked</b>", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_webpage'] = 'no'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"<b>WebLink</b> posting has been <i>Unlocked<i>", ok_cb, false)
+    return reply_msg(msg.id,"<b>WebLink</b> posting has been Unlocked", ok_cb, false)
   end
 end
 -- Anti Fwd Fanction by AminYaghi!
@@ -375,11 +375,11 @@ local function lock_group_fwd(msg, data, target)
   end
   local group_fwd_lock = data[tostring(target)]['settings']['lock_fwd']
   if group_fwd_lock == 'yes' then
-    return reply_msg(msg.id,"<b>Forward</b> is <i>Already<i> <b>Locked</b>", ok_cb, false)
+    return reply_msg(msg.id,"<b>Forward</b> is Already <b>Locked</b>", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_fwd'] = 'yes'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"<b>Forward</b> has been <i>Locked<i>", ok_cb, false)
+    return reply_msg(msg.id,"<b>Forward</b> has been Locked", ok_cb, false)
   end
 end
 
@@ -389,11 +389,11 @@ local function unlock_group_fwd(msg, data, target)
   end
   local group_fwd_lock = data[tostring(target)]['settings']['lock_fwd']
   if group_fwd_lock == 'no' then
-    return reply_msg(msg.id,"<b>Forward</b> is <i>Already<i> <b>Unlocked</b>", ok_cb, false)
+    return reply_msg(msg.id,"<b>Forward</b> is Already <b>Unlocked</b>", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_fwd'] = 'no'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"<b>Forward</b> has been <i>Unlocked<i>", ok_cb, false)
+    return reply_msg(msg.id,"<b>Forward</b> has been Unlocked", ok_cb, false)
   end
 end
 -- lock badword Fanction by AminYaghi!
@@ -403,11 +403,11 @@ local function lock_group_badw(msg, data, target)
   end
   local group_badw_lock = data[tostring(target)]['settings']['lock_badw']
   if group_badw_lock == 'yes' then
-    return reply_msg(msg.id,"<b>Badwords</b> are <i>Already<i> <b>Locked</b>", ok_cb, false)
+    return reply_msg(msg.id,"<b>Badwords</b> are Already <b>Locked</b>", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_badw'] = 'yes'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"<b>Badwords</b> have been <i>Locked<i>", ok_cb, false)
+    return reply_msg(msg.id,"<b>Badwords</b> have been Locked", ok_cb, false)
   end
 end
 
@@ -417,11 +417,11 @@ local function unlock_group_badw(msg, data, target)
   end
   local group_badw_lock = data[tostring(target)]['settings']['lock_badw']
   if group_badw_lock == 'no' then
-    return reply_msg(msg.id,"<b>Badwords</b> are <i>Already<i> <b>Unlocked</b> ", ok_cb, false)
+    return reply_msg(msg.id,"<b>Badwords</b> are Already <b>Unlocked</b> ", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_badw'] = 'no'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"<b>Badwords</b> have been <i>Unlocked<i>", ok_cb, false)
+    return reply_msg(msg.id,"<b>Badwords</b> have been Unlocked", ok_cb, false)
   end
 end
 -- lock emoji Fanction by AminYaghi!
@@ -431,11 +431,11 @@ local function lock_group_emoji(msg, data, target)
   end
   local group_emoji_lock = data[tostring(target)]['settings']['lock_emoji']
   if group_emoji_lock == 'yes' then
-    return reply_msg(msg.id,"<b>Emoji</b> is <i>Already<i> <b>Locked</b>", ok_cb, false)
+    return reply_msg(msg.id,"<b>Emoji</b> is Already <b>Locked</b>", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_emoji'] = 'yes'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"<b>Emoji</b> has been <i>Locked<i>", ok_cb, false)
+    return reply_msg(msg.id,"<b>Emoji</b> has been Locked", ok_cb, false)
   end
 end
 
@@ -445,11 +445,11 @@ local function unlock_group_emoji(msg, data, target)
   end
   local group_emoji_lock = data[tostring(target)]['settings']['lock_emoji']
   if group_emoji_lock == 'no' then
-    return reply_msg(msg.id,"<b>Emoji</b> is <i>Already<i> <b>UnLocked</b>", ok_cb, false)
+    return reply_msg(msg.id,"<b>Emoji</b> is Already <b>UnLocked</b>", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_emoji'] = 'no'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"<b>Emoji</b> has been <i>Unlocked<i> ", ok_cb, false)
+    return reply_msg(msg.id,"<b>Emoji</b> has been Unlocked ", ok_cb, false)
   end
 end
 -- lock English Fanction by AminYaghi!
@@ -459,11 +459,11 @@ local function lock_group_eng(msg, data, target)
   end
   local group_eng_lock = data[tostring(target)]['settings']['lock_eng']
   if group_eng_lock == 'yes' then
-    return reply_msg(msg.id,"<b>English</b> is <i>Already<i> <b>Locked</b>", ok_cb, false)
+    return reply_msg(msg.id,"<b>English</b> is Already <b>Locked</b>", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_eng'] = 'yes'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"<b>English</b> has been <i>Locked<i>", ok_cb, false)
+    return reply_msg(msg.id,"<b>English</b> has been Locked", ok_cb, false)
   end
 end
 
@@ -473,11 +473,11 @@ local function unlock_group_eng(msg, data, target)
   end
   local group_eng_lock = data[tostring(target)]['settings']['lock_eng']
   if group_eng_lock == 'no' then
-    return reply_msg(msg.id,"<b>English</b> is <i>Already<i> <b>UnLocked</b>", ok_cb, false)
+    return reply_msg(msg.id,"<b>English</b> is Already <b>UnLocked</b>", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_eng'] = 'no'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"<b>English</b> has been <i>Unlocked<i>", ok_cb, false)
+    return reply_msg(msg.id,"<b>English</b> has been Unlocked", ok_cb, false)
   end
 end
 local function unlock_group_membermod(msg, data, target)
@@ -486,11 +486,11 @@ local function unlock_group_membermod(msg, data, target)
   end
   local group_member_lock = data[tostring(target)]['settings']['lock_member']
   if group_member_lock == 'no' then
-    return reply_msg(msg.id,"<i>Supergroup<i> <b>Members</b> are not <b>Locked</b>", ok_cb, false)
+    return reply_msg(msg.id,"Supergroup <b>Members</b> are not <b>Locked</b>", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_member'] = 'no'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"<i>Supergroups<i> <b>Members</b> have been <i>Unlocked<i>", ok_cb, false)
+    return reply_msg(msg.id,"Supergroups <b>Members</b> have been Unlocked", ok_cb, false)
   end
 end
 
@@ -500,11 +500,11 @@ local function lock_group_rtl(msg, data, target)
   end
   local group_rtl_lock = data[tostring(target)]['settings']['lock_rtl']
   if group_rtl_lock == 'yes' then
-    return reply_msg(msg.id,"<b>RTL</b> is <i>Already<i> <b>Locked</b>", ok_cb, false)
+    return reply_msg(msg.id,"<b>RTL</b> is Already <b>Locked</b>", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_rtl'] = 'yes'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"<b>RTL</b> has been <i>Locked<i>", ok_cb, false)
+    return reply_msg(msg.id,"<b>RTL</b> has been Locked", ok_cb, false)
   end
 end
 
@@ -514,11 +514,11 @@ local function unlock_group_rtl(msg, data, target)
   end
   local group_rtl_lock = data[tostring(target)]['settings']['lock_rtl']
   if group_rtl_lock == 'no' then
-    return reply_msg(msg.id,"<b>RTL</b> is <i>Already<i> <b>Unlocked</b>", ok_cb, false)
+    return reply_msg(msg.id,"<b>RTL</b> is Already <b>Unlocked</b>", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_rtl'] = 'no'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"<b>RTL<b> has been <i>Unlocked<i>", ok_cb, false)
+    return reply_msg(msg.id,"<b>RTL<b> has been Unlocked", ok_cb, false)
   end
 end
 
@@ -528,11 +528,11 @@ local function lock_group_tgservice(msg, data, target)
   end
   local group_tgservice_lock = data[tostring(target)]['settings']['lock_tgservice']
   if group_tgservice_lock == 'yes' then
-    return reply_msg(msg.id,"<b>TGService</b> is <i>Already<i> <b>Locked</b>", ok_cb, false)
+    return reply_msg(msg.id,"<b>TGService</b> is Already <b>Locked</b>", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_tgservice'] = 'yes'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"<b>TGService</b> has been <i>Locked<i>", ok_cb, false)
+    return reply_msg(msg.id,"<b>TGService</b> has been Locked", ok_cb, false)
   end
 end
 
@@ -542,11 +542,11 @@ local function unlock_group_tgservice(msg, data, target)
   end
   local group_tgservice_lock = data[tostring(target)]['settings']['lock_tgservice']
   if group_tgservice_lock == 'no' then
-    return reply_msg(msg.id,"<b>TGService</b> is not <i>Locked<i>", ok_cb, false)
+    return reply_msg(msg.id,"<b>TGService</b> is not Locked", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_tgservice'] = 'no'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"<b>TGService</b> has been <i>Unlocked<i>", ok_cb, false)
+    return reply_msg(msg.id,"<b>TGService</b> has been Unlocked", ok_cb, false)
   end
 end
 -- Group Sticker Function by AminYaghi!
@@ -556,11 +556,11 @@ local function lock_group_sticker(msg, data, target)
   end
   local group_sticker_lock = data[tostring(target)]['settings']['lock_sticker']
   if group_sticker_lock == 'yes' then
-    return reply_msg(msg.id,"<b>Sticker</b> posting is <i>Already<i> <b>Locked</b>", ok_cb, false)
+    return reply_msg(msg.id,"<b>Sticker</b> posting is Already <b>Locked</b>", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_sticker'] = 'yes'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"<b>Sticker</b> posting has been <i>Locked<i>", ok_cb, false)
+    return reply_msg(msg.id,"<b>Sticker</b> posting has been Locked", ok_cb, false)
   end
 end
 
@@ -570,11 +570,11 @@ local function unlock_group_sticker(msg, data, target)
   end
   local group_sticker_lock = data[tostring(target)]['settings']['lock_sticker']
   if group_sticker_lock == 'no' then
-    return reply_msg(msg.id,"<b>Sticker</b> posting is <i>Already<i> <b>Unlocked</b>", ok_cb, false)
+    return reply_msg(msg.id,"<b>Sticker</b> posting is Already <b>Unlocked</b>", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_sticker'] = 'no'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"> #Sticker posting has been #unlocked", ok_cb, false)
+    return reply_msg(msg.id,"> <b>Sticker</b> posting has been <b>unlocked</b>", ok_cb, false)
   end
 end
 
